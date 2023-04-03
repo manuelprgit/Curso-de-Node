@@ -15,7 +15,7 @@ const argv = require('yargs')
                     alias:'hasta',
                     type:'number',
                 })
-                .check((argv, options) => {
+                .check((argv) => {
                     if (isNaN(argv.b)) {
                         throw 'Debe de ser numero';
                     }

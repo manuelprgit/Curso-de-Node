@@ -31,10 +31,10 @@ let multiplicar = async(base,listar = false, hasta) => {
 
         fs.writeFile(`./multiplicar/tabla-del-${base}.txt`, tabla, (err) => {
             if (err) throw err;
-            return (`tabla-de-${base}.txt Creada`);
         })
+        return `tabla-de-${base}.txt Creada`;
     } catch (error) {
-        reject(error);
+        return error;
     }
 }
 
