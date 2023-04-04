@@ -11,7 +11,7 @@ const port = process.env.PORT;
 app.set('view engine', 'hbs');
 app.set('views', './public/views')
 
-hbs.registerPartials(__dirname + '/public/views/partials',err => console.log(err));
+hbs.registerPartials(__dirname + '/public/views/partials');
 
 app.use(express.static('public'));
 
