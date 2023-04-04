@@ -1,14 +1,17 @@
+require('dotenv').config();
 const express = require('express');
 const hbs = require('hbs');
+const path = require('path');
 
-const app = express();
-const port = 8080;
+
+const app = express(); 
+const port = process.env.PORT;
 
 //handelbars
 app.set('view engine', 'hbs');
-hbs.registerPartials(__dirname + '/views/partials',err => {
-  return err
-});
+app.set('views', './public/views')
+
+hbs.registerPartials(__dirname + '/public/views/partials',err => console.log(err));
 
 app.use(express.static('public'));
 
@@ -18,20 +21,12 @@ app.get('/',(req,res) => {
 
 app.get('/generic',(req,res) => {
   res.render('generic');
-});
+})
 
 app.get('/elements',(req,res) => {
   res.render('elements');
-});
-
-// app.get('/generic',(req,res) => {
-//   // res.sendFile(__dirname+'/public/generic.html');
-// })
-
-// app.get('/elements',(req,res) => {
-//   res.sendFile(__dirname + '/public/elements.html')
-// })
-
+})
+ 
 app.listen(port,() => {
-  console.log('listening on port '+ port)
+  console.log('listening on port '+ port);
 })
